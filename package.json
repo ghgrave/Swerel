@@ -1,0 +1,43 @@
+{
+  "name": "skwerel",
+  "version": "1.0.0",
+  "description": "Site allows user to save to a watchlist and have auto-notifications sent to them when items are available",
+  "main": "index.js",
+  "engines": {
+    "node": "14.15.1",
+    "npm": "6.14.10"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghgrave/Skwerel.git"
+  },
+  "keywords": [
+    "skwerel",
+    "movie.",
+    "movies",
+    "tv",
+    "shows",
+    "books",
+    "nest",
+    "nuts",
+    "watchlist"
+  ],
+  "author": "gHgraveDesigns@2021",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghgrave/Skwerel/issues"
+  },
+  "homepage": "https://github.com/ghgrave/Skwerel#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.0",
+    "node-fetch": "^2.6.1"
+  }
+}

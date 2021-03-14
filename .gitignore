@@ -1,0 +1,9 @@
+# node modules
+node_modules
+
+#  config files
+dev.js
+
+# misc
+.vscode
+.DS_Store
