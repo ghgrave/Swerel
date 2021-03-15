@@ -1,3 +1,9 @@
+palette {
+  font: bold "Henny Penny", serif; /* default font*/
+  color: #7aff7a; /* skwerel green*/
+  color: #002b00; /* skwerel text shadow darkgreen*/
+}
+
 * {
   margin: 0;
   padding: 0;
