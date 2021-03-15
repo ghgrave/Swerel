@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const debug = require('debug')('index')
 
 
 app.use(express.static('public'))
@@ -49,4 +48,4 @@ require("./routes/API")(app);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, ()=> debug('Port: ', PORT));
+app.listen(PORT);
