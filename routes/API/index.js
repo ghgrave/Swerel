@@ -13,6 +13,7 @@ module.exports = (app) => {
 
   app.get("/popular", (req, res) => {
     let url = `https://api.themoviedb.org/3/movie/popular?api_key=${keys.tmdbKey}&language=en-US`;
+
     $fetch(url)
       .then((response) => response.json())
       .then((data) => res.render("popular", { data: data.results }))

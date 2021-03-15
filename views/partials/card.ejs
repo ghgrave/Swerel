@@ -1,0 +1,22 @@
+<div class="card" >
+  <% let imageSrc = `https://image.tmdb.org/t/p/w500/${data[0].poster_path}`  %> 
+  <img src=<%= imageSrc %> class="card-img-top" alt=<%= data[0].title %>>
+  <div class="card-body">
+    <h5 class="card-title text-center"><%= data[0].title %></h5>
+    <p class="card-text"><%= data[0].overview%></p>
+  </div>
+  <!-- <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul> -->
+  <button type="button" class="btn btn-success">Add to my Drey</button>
+  <div class="card-body text-center">
+    
+    <p class="movieDetails"><span>Release date: </span><%= data[0].release_date%></p>
+    <p class="movieDetails"><span>Votes: </span><%= data[0].vote_average%>/10</p>
+    
+    <!-- <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a> -->
+  </div>
+</div>

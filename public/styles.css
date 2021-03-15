@@ -23,6 +23,35 @@ h1 {
   letter-spacing: 0.1em;
 }
 
+.card {
+  width: 18rem;
+  font-size: .75em;
+  border: 2px darkgreen ridge;
+  margin: 2%;
+}
+
+.card img {
+  height: 40vh;
+}
+
+.card-text {
+  font-weight: bold;
+  border: 2px darkgreen solid;
+  height: 100px;
+  overflow: auto;
+  padding: 2%;
+  text-align: justify;
+}
+
+.movieDetails {
+  margin: 0;
+}
+
+
+.movieDetails span {
+  font-weight: bold;
+}
+
 /* #oakTree_container {
   height: 14vh;
   width: 25%;

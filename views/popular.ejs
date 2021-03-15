@@ -1,8 +1,7 @@
 <%- include('partials/header') %>
 
-
   <h1>SKWEREL</h1>
-  <h3 class='text-uppercase text-center'>Popular!!</h3>
-  <p><%= data[0].title  %> </p>
-
+  <h3 class="text-uppercase text-center">Popular!!</h3>
+  <%- include('partials/card', {movie: data}) %> 
+  
 <%- include('partials/footer') %>
