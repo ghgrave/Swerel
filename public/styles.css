@@ -1,7 +1,7 @@
 palette {
   font: bold "Henny Penny", serif; /* default font*/
-  color: #7aff7a; /* skwerel green*/
-  color: #002b00; /* skwerel text shadow darkgreen*/
+  color: #ffdbac; /* skwerel tan */
+  color: #061c06; /* skwerel text shadow darkgreen*/
 }
 
 * {
@@ -11,7 +11,7 @@ palette {
 }
 
 body {
-  background-color: #7aff7a;
+  background-color: #ffdbac;
 }
 
 h1 {
@@ -19,19 +19,19 @@ h1 {
   text-align: center;
   color: black;
   font: bold 8rem "Henny Penny", serif;
-  text-shadow: 1px 1px 10px white, 6px 6px 10px #002b00;
+  text-shadow: 1px 1px 10px white, 6px 6px 10px #061c06;
   letter-spacing: 0.1em;
 }
 
 .card {
-  width: 18rem;
+  width: 17rem;
   font-size: .75em;
   border: 2px darkgreen ridge;
   margin: 2%;
 }
 
 .card img {
-  height: 40vh;
+  height: 35vh;
 }
 
 .card-text {
@@ -43,10 +43,15 @@ h1 {
   text-align: justify;
 }
 
+button,
+.navbar {
+  font-family: "Henny Penny", serif;
+  text-shadow: 1px 1px 0 #061c06;
+}
+
 .movieDetails {
   margin: 0;
 }
-
 
 .movieDetails span {
   font-weight: bold;
