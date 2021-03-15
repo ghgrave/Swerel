@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const debug = require('debug')('index')
 
 
 app.use(express.static('public'))
@@ -47,4 +48,5 @@ app.get("/logout", (req, res) => {
 require("./routes/API")(app);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT);
+
+app.listen(PORT, ()=> debug(console.log(PORT)));
