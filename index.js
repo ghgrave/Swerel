@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+app.use(express.static('public'))
+app.set('view engine', 'ejs')
+
 const keys = require("./config/keys");
 
 const mongoose = require("mongoose");
@@ -21,6 +24,10 @@ let data = {
   overview: "Heroku Movie about nothing right now",
   releaseDate: "3-30-2021",
 };
+
+app.get('/', (req, res)=>{
+  res.render('index')
+})
 
 app.get("/test", (req, res) => {
   // Instead of using new() and save() functions, use the create() method
