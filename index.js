@@ -1,9 +1,6 @@
 const express = require("express");
 const app = express();
 
-const axios = require('axios')
-const $fetch = require('node-fetch')
-
 const keys = require("./config/keys");
 
 const mongoose = require("mongoose");
@@ -32,27 +29,12 @@ app.get("/test", (req, res) => {
   });
 });
 
-app.get('/api/search', (req, res)=>{
-  let movie_id = 129;
-  let url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${keys.tmdbKey}&language=en-US`
-  $fetch(url)
-  .then(response => response.json())
-  .then(data => res.send(data))
-  .catch(err => res.end("Err", err)) 
-})
-
-app.get('/api/popular', (req, res)=>{
-  let url = `https://api.themoviedb.org/3/movie/popular?api_key=${keys.tmdbKey}&language=en-US`
-  $fetch(url)
-  .then(response => response.json())
-  .then(data => res.send(data))
-  .catch(err => res.end("Err", err)) 
-})
-
-app.get('/logout',(req, res)=>{
+app.get("/logout", (req, res) => {
   mongoose.disconnect();
-  res.send('Disconnected!!!!')
-})
+  res.send("Disconnected!!!!");
+});
+
+require("./routes/API")(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
