@@ -13,8 +13,8 @@
   <button type="button" class="btn btn-success">Add to my Drey</button>
   <div class="card-body text-center">
     <p class="movieDetails">
-      <% let relDate = new Date(data[0].release_date) %>
-      <span>Release date: </span><%= relDate.getMonth()+1%>-<%= relDate.getDate()+1%>-<%= relDate.getFullYear()%>
+      
+      <span>Release date: </span><%= data[0].release_date%>
     </p>
     <p class="movieDetails">
       <span>Votes: </span><%= data[0].vote_average%>/10
