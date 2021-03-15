@@ -49,4 +49,4 @@ require("./routes/API")(app);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, ()=> debug(console.log(PORT)));
+app.listen(PORT, ()=> debug('Port: ', PORT));
