@@ -52,7 +52,8 @@ h1 {
 
 .card-text {
   font-weight: bold;
-  border: 2px #156064 solid;
+  /* border: 2px #156064 solid; */
+  box-shadow: -5px 5px 15px #061c06;
   height: 100px;
   overflow: auto;
   padding: 2%;
