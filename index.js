@@ -3,6 +3,7 @@ const app = express();
 
 
 app.use(express.static('public'))
+// app.use('/api/popular', express.static('public'));
 app.set('view engine', 'ejs')
 
 const keys = require("./config/keys");
@@ -30,10 +31,7 @@ app.get('/', (req, res)=>{
   res.render('index')
 })
 
-
-
 app.get("/test", (req, res) => {
-  // Instead of using new() and save() functions, use the create() method
   Movie.create(data, function (err, movie) {
     err ? res.send("Error: ", err) : res.send(movie);
   });
@@ -47,5 +45,4 @@ app.get("/logout", (req, res) => {
 require("./routes/API")(app);
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT);

@@ -1,23 +1,32 @@
-<div class="card" >
-  <% let imageSrc = `https://image.tmdb.org/t/p/w500/${data[0].poster_path}`  %> 
-  <img src=<%= imageSrc %> class="card-img-top" alt=<%= data[0].title %>>
-  <div class="card-body">
-    <h5 class="card-title text-center">
-      <%= data[0].title %>
-    </h5>
-    <p class="card-text">
-      <%= data[0].overview%>
-    </p>
-  </div>
 
-  <button type="button" class="btn btn-success">Add to my Drey</button>
-  <div class="card-body text-center">
-    <p class="movieDetails">
-      
-      <span>Release date: </span><%= data[0].release_date%>
-    </p>
-    <p class="movieDetails">
-      <span>Votes: </span><%= data[0].vote_average%>/10
-    </p>
+<% data.forEach(movie => { %>
+  <div class="col">
+    <div class="card">
+      <% let imageSrc = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`  %> 
+      <img src=<%= imageSrc %> class="card-img-top" alt=<%= movie.title %>>
+
+      <div class="card-body">
+        <h5 class="card-title text-center">
+          <%= movie.title %>
+        </h5>
+        <p class="card-text">
+          <%= movie.overview%>
+        </p>
+      </div>
+
+      <button type="button" class="btn btn-success">Add to my Drey</button>
+
+      <div class="card-body text-center">
+        <p class="movieDetails">
+          
+          <span>Release date: </span><%= movie.release_date%>
+        </p>
+        <p class="movieDetails">
+          <span>Votes: </span><%= movie.vote_average%>/10
+        </p>
+      </div>
+
+
+    </div>
   </div>
-</div>
+<% }) %>

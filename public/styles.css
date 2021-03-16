@@ -8,6 +8,7 @@ palette {
   margin: 0;
   padding: 0;
   border: none;
+  box-sizing: border-box;
 }
 
 body {
@@ -25,10 +26,11 @@ h1 {
 }
 
 .card {
-  width: 17rem;
+  width: 19rem;
   font-size: .75em;
   border: 2px darkgreen ridge;
-  margin: 2%;
+  margin: 2% 10%;
+  height: 73vh;
 }
 
 .card img {
@@ -48,6 +50,19 @@ button,
 .navbar {
   font-family: "Henny Penny", serif;
   text-shadow: 1px 1px 0 #061c06;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: white;
+}
+
+
+/* Card and Upcoming styles */
+#upcoming_container {
+  /* border: #013e01a7 15px ridge; */
+  height: 79vh;
+  overflow: auto;
+  margin: -1% 1%;
 }
 
 .movieDetails {
