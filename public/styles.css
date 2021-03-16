@@ -20,8 +20,8 @@ h1 {
   width: 100%;
   text-align: center;
   color: black;
-  font: bold 8rem "Henny Penny", serif;
-  text-shadow: 1px 1px 10px white, 6px 6px 10px #061c06;
+  font: bold 4rem "Henny Penny", serif;
+  text-shadow: 1px 1px 5px white, 3px 3px 5px #061c06;
   letter-spacing: 0.1em;
 }
 

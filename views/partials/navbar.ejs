@@ -7,14 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="/upcoming">Upcoming Movies</a>
+          <a class="nav-link " aria-current="page" href="/upcoming">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"></a>
+          <a class="nav-link" href="#">TV</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Music</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dreys
+            My Dreys
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Movies</a></li>
@@ -27,9 +33,11 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex mb-1" action='/search'>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-success ms-1" type="submit" formaction="/login">Login</button>
+        <button class="btn btn-danger ms-1" type="submit" formaction="/logout">Logout</button>
       </form>
     </div>
   </div>
