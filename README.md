@@ -21,3 +21,7 @@
 1. Heroku env vars set up
 1. ALL test routes work in dev and prod mode.
 1. Added card.ejs to test data passing and styling
+
+3/22/2021
+
+1. Set up production on Heroku for passport authentication
