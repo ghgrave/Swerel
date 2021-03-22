@@ -7,21 +7,6 @@ const User = require("../../models/User");
 
 const bodyParser = require("body-parser");
 
-
-let data = {
-  username: 'ghgrave',
-  password: '777777',
-  // movies: [
-  //   {
-  //     title: 'My first Ref Attempt',
-  //     votes: 12,
-  //     overview: 'This is my description!!!',
-  //     releaseDate: "2021-03-16"
-  //   }
-  // ]
-
-};
-
 module.exports = (app) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   
@@ -31,10 +16,11 @@ module.exports = (app) => {
 
   app.post("/login",
     passport.authenticate("local", {
-      successRedirect: "/upcoming",
+      successRedirect: "/dreys/movies",
       failureRedirect: "/login"
     }),
-    function (req, res) {}
+    function (req, res) {
+    }
   );
 
   app.get("/logout", function (req, res) {
