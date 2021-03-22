@@ -18,7 +18,6 @@ app.use(
   })
 );
 const mongoose = require("mongoose");
-// require("./services/passport"); 
 
 mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,

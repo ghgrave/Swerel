@@ -1,11 +1,19 @@
 <%- include('partials/header') %>
 
-<h1>Log in page!!</h1>
+<!-- <h1>Log in page!!</h1> -->
+
 
 <form action="/login">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button formmethod='POST'>Login</button>
+
+    
+    <label class='form-label'>Username:
+        <input class="form-control" type="text" name="username" placeholder="username" autocomplete="off">
+    </label>
+    <label class='form-label'>Password:
+        <input class="form-control" type="password" name="password" placeholder="password">
+    </label>
+    
+    <button class="btn btn-success" formmethod='POST'>Login</button>
     <button type='submit' class="btn btn-danger" formaction='/signup' formmethod="GET">SignUp</button>
 </form>
 
