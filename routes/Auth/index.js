@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 
 let data = {
   username: 'ghgrave',
-  password: '12346',
+  password: '777777',
   // movies: [
   //   {
   //     title: 'My first Ref Attempt',
@@ -27,10 +27,6 @@ module.exports = (app) => {
   
   app.get("/login", (req, res) => {
     res.render("login.ejs");
-    // User.create(data, (err, user)=>{
-    //   err ? res.send('Error: ', err) : res.send(user);
-    // });
-    
   });
 
   app.post("/login",
@@ -53,7 +49,6 @@ module.exports = (app) => {
   });
   
   app.post("/signup", (req, res) => {
-    console.log(req.body)
     var newUser = new User({ username: req.body.username });
     User.register(newUser, req.body.password, function (err, user) {
       if (err) {
