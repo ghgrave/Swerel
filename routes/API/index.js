@@ -1,18 +1,43 @@
 const $fetch = require("node-fetch");
 const User = require('../../models/User')
+const Movie = require('../../models/Movie')
 const keys = require("../../config/keys");
 
 module.exports = (app) => {
-  app.get("/dreys/movies", isLoggedIn, (req, res) => {
-    User.findById({_id: req.user._id}, (err, data)=>{
-      err ? res.send(err) : res.send(data.movies);
+
+  app.get('/addmovie', isLoggedIn, (req, res)=>{
+    !req.isAuthenticated() ? res.redirect('/login') : false;
+    console.log(req.user._id, " ", req.query.add_movie)
+    const newMovie = new Movie({
+      title: `Hello ${req.query.add_movie}!`
     })
-    // let movie_id = 12;
-    // let url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${keys.tmdbKey}&language=en-US`;
-    // $fetch(url)
-    //   .then((response) => response.json())
-    //   .then((data) => res.send(data))
-    //   .catch((err) => res.render("Error", err));
+    User.updateOne({_id: req.user._id},
+      {$push: {
+        movies: newMovie
+        }
+      },
+      (err, data)=>{
+        err ? res.render('error') : (
+          User.findOne({_id:req.user._id})
+            .populate('movies')
+            .exec((err, user)=>{
+              !err ? res.send(user) : res.render('error');
+          })
+          
+      );
+      }
+    )
+    // res.end()
+  })
+
+  app.get('/my_dreys', isLoggedIn, (req, res)=>{
+    res.render('dreys')
+  })
+
+  app.get("/movie_drey", isLoggedIn, (req, res) => {
+    User.findById({_id: req.user._id}, (err, data)=>{
+      err ? res.render('error') : res.send(data.movies);
+    })
   });
 
   app.get("/upcoming", (req, res) => {

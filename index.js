@@ -23,10 +23,6 @@ mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
-// DELETE:
-// .then(() =>{
-//   console.log(`Connected to database.`)
-// }).catch(err => console.log('I am error!!! ', err));
 
 // const Movie = require("./models/Movie");
 
