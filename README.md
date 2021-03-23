@@ -25,3 +25,9 @@
 3/22/2021
 
 1. Set up production on Heroku for passport authentication
+
+3/23/2021
+
+1. Set up mongo schema connecting movies and user.
+1. Set up movie Drey to display user specific movies added to db
+1. Still need to refactor and clean up paths
