@@ -1,29 +1,32 @@
 const $fetch = require("node-fetch");
 const User = require('../../models/User')
-const Movie = require('../../models/Movie')
 const keys = require("../../config/keys");
+const {test} = require('../../helpers/helpers')
+
 
 module.exports = (app) => {
 
   app.get('/addmovie', isLoggedIn, (req, res)=>{
     !req.isAuthenticated() ? res.redirect('/login') : false;
-    console.log('Movie id: ', req.query.add_movie)
-    User.updateOne({_id: req.user._id},
-      {$push: {
-        movies: req.query.add_movie
-        }
-      },
-      (err, data)=>{
-        err ?  res.render('error') : (
-          User.findOne({_id:req.user._id})
-            .populate('movies')
-            .exec((err, user)=>{
-              !err ? res.send(user) : res.render('error');
-          })
-          
-      );
-      }
-    )
+    User.find({_id: req.user._id}, (err, test)=> {
+      !test[0].movies.includes(req.query.add_movie) ? 
+       (User.updateOne({_id: req.user._id},
+        {$push: {
+          movies: req.query.add_movie
+          }
+        },
+        (err, data)=>{
+          err ?  res.render('error') 
+          : (
+            User.findOne({_id:req.user._id})
+              .populate('movies')
+              .exec((err, user)=>{
+                !err ? res.send(user) : res.render('error');
+            })
+        );
+        }))
+        : res.send('Already exists!!!');
+    })
   })
 
   app.get('/my_dreys', isLoggedIn, (req, res)=>{
