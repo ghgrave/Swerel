@@ -7,7 +7,7 @@ const MovieSchema = new Schema({
     type: String,
     default: "Doggie Dog!!!"
   } ,
-  votes: {
+  vote_average: {
     type: Number,
     default: 0,
   },
@@ -15,10 +15,14 @@ const MovieSchema = new Schema({
     type: String,
     default: "No description at this time",
   },
-  releaseDate: {
+  release_date: {
     type: String,
     default: "No release date at this time",
   },
+  poster_path: {
+    type: String,
+    default: this.title
+  }
 });
 
 module.exports = mongoose.model("Movie", MovieSchema);

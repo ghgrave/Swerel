@@ -1,8 +1,6 @@
 const $fetch = require("node-fetch");
 const User = require('../../models/User')
 const keys = require("../../config/keys");
-const {test} = require('../../helpers/helpers')
-
 
 module.exports = (app) => {
 
@@ -10,19 +8,19 @@ module.exports = (app) => {
     !req.isAuthenticated() ? res.redirect('/login') : false;
     User.find({_id: req.user._id}, (err, test)=> {
       !test[0].movies.includes(req.query.add_movie) ? 
-       (User.updateOne({_id: req.user._id},
-        {$push: {
-          movies: req.query.add_movie
-          }
-        },
-        (err, data)=>{
-          err ?  res.render('error') 
-          : (
-            User.findOne({_id:req.user._id})
-              .populate('movies')
-              .exec((err, user)=>{
-                !err ? res.send(user) : res.render('error');
-            })
+        (User.updateOne({_id: req.user._id},
+          {$push: {
+            movies: req.query.add_movie
+            }
+          },
+          (err, data)=>{
+            err ?  res.render('error') 
+            : (
+              User.findOne({_id:req.user._id})
+                .populate('movies')
+                .exec((err, user)=>{
+                  !err ? res.send(user) : res.render('error');
+              })
         );
         }))
         : res.send('Already exists!!!');
@@ -30,13 +28,19 @@ module.exports = (app) => {
   })
 
   app.get('/my_dreys', isLoggedIn, (req, res)=>{
-    res.render('dreys')
+    User.findOne({_id:req.user._id})
+                .populate('movies') 
+                .exec((err, user)=>{
+                  !err ? res.render("dreys", {data: user}) : res.render('error');
+              })
   })
 
   app.get("/movie_drey", isLoggedIn, (req, res) => {
-    User.findById({_id: req.user._id}, (err, data)=>{
-      err ? res.render('error') : res.send(data.movies);
-    })
+    User.findOne({_id:req.user._id})
+                .populate('movies') 
+                .exec((err, user)=>{
+                  !err ? res.render("dreys", {data: user}) : res.render('error');
+              })
   });
 
   app.get("/upcoming", (req, res) => {

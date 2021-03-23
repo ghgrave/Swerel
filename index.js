@@ -55,9 +55,10 @@ app.get("/test", (req, res) => {
             let addMovie = {
               _id: movie.id,
               title: movie.title, 
-              votes: movie.vote_average,
+              vote_average: movie.vote_average,
               overview: movie.overview,
-              releaseDate: movie.release_date
+              release_date: movie.release_date,
+              poster_path: movie.poster_path
             }
     
             Movie.create(addMovie, function (err, movie) {
