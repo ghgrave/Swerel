@@ -7,17 +7,14 @@ module.exports = (app) => {
 
   app.get('/addmovie', isLoggedIn, (req, res)=>{
     !req.isAuthenticated() ? res.redirect('/login') : false;
-    console.log(req.user._id, " ", req.query.add_movie)
-    const newMovie = new Movie({
-      title: `Hello ${req.query.add_movie}!`
-    })
+    console.log('Movie id: ', req.query.add_movie)
     User.updateOne({_id: req.user._id},
       {$push: {
-        movies: newMovie
+        movies: req.query.add_movie
         }
       },
       (err, data)=>{
-        err ? res.render('error') : (
+        err ?  res.render('error') : (
           User.findOne({_id:req.user._id})
             .populate('movies')
             .exec((err, user)=>{
@@ -27,7 +24,6 @@ module.exports = (app) => {
       );
       }
     )
-    // res.end()
   })
 
   app.get('/my_dreys', isLoggedIn, (req, res)=>{

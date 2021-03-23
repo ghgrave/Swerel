@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const MovieSchema = new Schema({
+  _id: Number,
   title: {
     type: String,
     default: "Doggie Dog!!!"

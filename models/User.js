@@ -9,7 +9,7 @@ const UserSchema = new Schema({
       required: true
     },
     password: String,
-    movies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
+    movies: [{ type: mongoose.Schema.Types.Number, ref: 'Movie' }]
 });
 
 UserSchema.plugin(passportLocalMongoose);

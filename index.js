@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+const $fetch = require('node-fetch')
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -24,7 +25,7 @@ mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
 });
 
-// const Movie = require("./models/Movie");
+const Movie = require("./models/Movie");
 
 const User = require('./models/User')
 // starts a session
@@ -42,9 +43,34 @@ app.get('/', (req, res)=>{
 })
 
 app.get("/test", (req, res) => {
-  Movie.create(data, function (err, movie) {
-    err ? res.send("Error: ", err) : res.send(movie);
-  });
+  let url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${keys.tmdbKey}&language=en-US`;
+  $fetch(url)
+    .then((response) => response.json())
+    .then(data => {
+      for(let i=1; i <= 2; i++){
+        $fetch(`${url}&page=${i}`)
+        .then((response) => response.json())
+        .then(data => {
+          data.results.forEach(movie => {
+            let addMovie = {
+              _id: movie.id,
+              title: movie.title, 
+              votes: movie.vote_average,
+              overview: movie.overview,
+              releaseDate: movie.release_date
+            }
+    
+            Movie.create(addMovie, function (err, movie) {
+                err ? res.send("Error: ", err) : console.log(movie);
+            });
+          })
+        })
+        // .then(data => console.log(data.results[0].title), res.end())
+        .catch((err) => res.render("error"));
+      }})
+    // .then((data) => console.log(data.total_pages), res.end())
+    .catch((err) => res.render("error"));
+  
 });
 
 require("./routes/API")(app);
