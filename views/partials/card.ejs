@@ -1,7 +1,7 @@
 
 <% data.forEach(movie => { %>
   <div class="col">
-    <div class="card">
+    <form class="card">
       <% let imageSrc = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`  %> 
       <img src=<%= imageSrc %> class="card-img-top" alt=<%= movie.title %>>
 
@@ -13,9 +13,8 @@
           <%= movie.overview%>
         </p>
       </div>
-
-      <button type="button" class="btn btn-success">Add to my Drey</button>
-
+      <button type="submit" class="btn btn-success" formaction='/addmovie' name='add_movie' value=<%=movie.id %>>Add to my Drey</button>
+      
       <div class="card-body text-center">
         <p class="movieDetails">
           
@@ -27,6 +26,6 @@
       </div>
 
 
-    </div>
+    </form>
   </div>
 <% }) %>
