@@ -1,7 +1,7 @@
-const $fetch = require("node-fetch");
+// const $fetch = require("node-fetch");
 const User = require('../../models/User')
 const Movie = require('../../models/Movie')
-const keys = require("../../config/keys");
+// const keys = require("../../config/keys");
 const {fillMovies} = require('../../helpers/queries')
 const {isLoggedIn} = require('../../helpers/auth')
 
