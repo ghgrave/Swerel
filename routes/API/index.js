@@ -1,5 +1,6 @@
 const $fetch = require("node-fetch");
 const User = require('../../models/User')
+const Movie = require('../../models/Movie')
 const keys = require("../../config/keys");
 const {fillMovies} = require('../../helpers/queries')
 const {isLoggedIn} = require('../../helpers/auth')
@@ -36,10 +37,14 @@ module.exports = (app) => {
   });
 
   app.get("/upcoming", (req, res) => {
-    let url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${keys.tmdbKey}&language=en-US&page=1`;
-    $fetch(url)
-      .then((response) => response.json())
-      .then((data) => res.render("upcoming", { data: data.results, pages: data.total_pages}))
-      .catch((err) => res.render("error"));
+    Movie.find({})
+      .sort({"release_date": -1})
+      .exec((err, movies)=> {
+        err ? 
+          res.send(err)
+          : (
+            res.render("upcoming", { data: movies})
+            )
+    })
   });
 };
