@@ -13,9 +13,9 @@ const LocalStrategy = require("passport-local");
 
 app.use(
   require("express-session")({
-    secret: "Blah blah blah", // used to calculate the hash to protect our password
+    secret: keys.mongooseSecret, // used to calculate the hash to protect our password
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false
   })
 );
 const mongoose = require("mongoose");
@@ -26,8 +26,8 @@ mongoose.connect(keys.mongoURI, {
 });
 
 const Movie = require("./models/Movie");
-
 const User = require('./models/User')
+
 // starts a session
 app.use(passport.initialize());
 // allows access to
@@ -66,12 +66,9 @@ app.get("/test", (req, res) => {
             });
           })
         })
-        // .then(data => console.log(data.results[0].title), res.end())
         .catch((err) => res.render("error"));
       }})
-    // .then((data) => console.log(data.total_pages), res.end())
     .catch((err) => res.render("error"));
-  
 });
 
 require("./routes/API")(app);

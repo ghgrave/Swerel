@@ -1,6 +1,7 @@
 const $fetch = require("node-fetch");
 const User = require('../../models/User')
 const keys = require("../../config/keys");
+const {fillMovies} = require('../../helpers/mongoose')
 
 module.exports = (app) => {
 
@@ -15,14 +16,8 @@ module.exports = (app) => {
           },
           (err, data)=>{
             err ?  res.render('error') 
-            : (
-              User.findOne({_id:req.user._id})
-                .populate('movies')
-                .exec((err, user)=>{
-                  !err ? res.send(user) : res.render('error');
-              })
-        );
-        }))
+            : fillMovies(User, req, res);
+          }))
         : res.send('Already exists!!!');
     })
   })
