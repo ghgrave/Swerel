@@ -25,14 +25,14 @@ module.exports = (app) => {
   })
 
   app.get('/my_dreys', isLoggedIn, (req, res)=>{
-    res.send('My Dreys')
+    res.render('my_dreys')
   })
 
   app.get("/movie_drey", isLoggedIn, (req, res) => {
     User.findOne({_id:req.user._id})
     .populate('movies') 
     .exec((err, user)=>{
-      !err ? res.render("dreys", {data: user}) : res.render('error');
+      !err ? res.render("d_movies", {data: user}) : res.render('error');
     })
   });
 

@@ -30,4 +30,5 @@
 
 1. Set up mongo schema connecting movies and user.
 1. Set up movie Drey to display user specific movies added to db
-1. Still need to refactor and clean up paths
+1. Still need to refactor and clean up paths - DONE
+1. Movies sorted by date - descending - on upcoming page
