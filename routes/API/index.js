@@ -28,19 +28,15 @@ module.exports = (app) => {
   })
 
   app.get('/my_dreys', isLoggedIn, (req, res)=>{
-    User.findOne({_id:req.user._id})
-                .populate('movies') 
-                .exec((err, user)=>{
-                  !err ? res.render("dreys", {data: user}) : res.render('error');
-              })
+    res.send('My Dreys')
   })
 
   app.get("/movie_drey", isLoggedIn, (req, res) => {
     User.findOne({_id:req.user._id})
-                .populate('movies') 
-                .exec((err, user)=>{
-                  !err ? res.render("dreys", {data: user}) : res.render('error');
-              })
+    .populate('movies') 
+    .exec((err, user)=>{
+      !err ? res.render("dreys", {data: user}) : res.render('error');
+  })
   });
 
   app.get("/upcoming", (req, res) => {
