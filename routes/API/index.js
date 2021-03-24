@@ -1,7 +1,8 @@
 const $fetch = require("node-fetch");
 const User = require('../../models/User')
 const keys = require("../../config/keys");
-const {fillMovies} = require('../../helpers/mongoose')
+const {fillMovies} = require('../../helpers/queries')
+const {isLoggedIn} = require('../../helpers/auth')
 
 module.exports = (app) => {
 
@@ -31,7 +32,7 @@ module.exports = (app) => {
     .populate('movies') 
     .exec((err, user)=>{
       !err ? res.render("dreys", {data: user}) : res.render('error');
-  })
+    })
   });
 
   app.get("/upcoming", (req, res) => {
@@ -41,14 +42,4 @@ module.exports = (app) => {
       .then((data) => res.render("upcoming", { data: data.results, pages: data.total_pages}))
       .catch((err) => res.render("error"));
   });
-
-  function isLoggedIn(req, res, next) {
-    // isAuthenticated is a built in Passport method
-    
-    if (req.isAuthenticated()) {
-      // next() tells it to move onto the next piece of code
-      return next();
-    }
-    res.redirect("/login");
-  }
 };
