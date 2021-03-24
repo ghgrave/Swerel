@@ -1,4 +1,5 @@
 // const $fetch = require("node-fetch");
+const moment = require('moment')
 const User = require('../../models/User')
 const Movie = require('../../models/Movie')
 // const keys = require("../../config/keys");
@@ -37,12 +38,15 @@ module.exports = (app) => {
   });
 
   app.get("/upcoming", (req, res) => {
-    Movie.find({})
+    let now = moment().subtract(7, 'd').format('YYYY-MM-DD')
+    console.log(now)
+    Movie.find({"release_date" : {$gte: now}})
       .sort({"release_date": -1})
       .exec((err, movies)=> {
         err ? 
           res.send(err)
           : (
+            console.log(movies.length),
             res.render("upcoming", { data: movies})
             )
     })
