@@ -5,21 +5,23 @@
       <% let imageSrc = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`  %> 
       <img src=<%= imageSrc %> class="card-img-top" alt=<%= movie.title %>>
 
-      <div class="card-body">
-        <h5 class="card-title text-center">
+      <div class="card-body text-center">
+        <h5 class="card-title fs-6">
           <%= movie.title %>
         </h5>
         <p class="card-text">
+          <span class='text-uppercase badge bg-success text-wrap' ><%= movie.title %></span>
+          <br>
           <%= movie.overview%>
         </p>
       </div>
       <% if (!addMovie) { %>
-        <button type="submit" class="btn btn-danger" formaction='/removemovie' name='remove_movie' value=<%=movie.id %>>Remove from my Drey</button>
+        <button class="btn btn-danger" formaction='/removemovie' name='remove_movie_id' value=<%=movie.id %>>Remove from my Drey</button>
       <% } else {%>
         <button type="submit" class="btn btn-success" formaction='/addmovie' name='add_movie' value=<%=movie.id %>>Add to my Drey</button>
       <% } %>
 
-      <div class="card-body text-center">
+      <div class="card-body">
         <p class="movieDetails">
           
           <span>Release date: </span><%= movie.release_date%>

@@ -38,7 +38,7 @@ h1 {
 
 .card {
   width: 19rem;
-  font-size: .75em;
+  /* font-size: .75em; */
   border: 2px #156064 ridge;
   margin: 2% 10%;
   height: 73vh;
@@ -52,12 +52,26 @@ h1 {
 .card-text {
   font-weight: bold;
   /* border: 2px #156064 solid; */
+  font-size: .75em;
   box-shadow: -5px 5px 15px #061c06;
   height: 100px;
   overflow: auto;
   padding: 2%;
   text-align: justify;
 }
+
+p span.bg-success {
+  background-color: #156064 !important;
+  text-shadow: 1px 1px black;
+}
+
+.card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
 
 button,
 .navbar {

@@ -3,7 +3,7 @@ const moment = require('moment')
 const User = require('../../models/User')
 const Movie = require('../../models/Movie')
 // const keys = require("../../config/keys");
-const {fillMovies} = require('../../helpers/queries')
+const {fillMovies, removeMovie} = require('../../helpers/queries')
 const {isLoggedIn} = require('../../helpers/auth')
 
 module.exports = (app) => {
@@ -23,6 +23,10 @@ module.exports = (app) => {
           }))
         : res.send('Already exists!!!');
     })
+  })
+
+  app.get('/removemovie', (req, res)=> {
+    removeMovie(User, req, res);
   })
 
   app.get('/my_dreys', isLoggedIn, (req, res)=>{
