@@ -13,8 +13,12 @@
           <%= movie.overview%>
         </p>
       </div>
-      <button type="submit" class="btn btn-success" formaction='/addmovie' name='add_movie' value=<%=movie.id %>>Add to my Drey</button>
-      
+      <% if (!addMovie) { %>
+        <button type="submit" class="btn btn-danger" formaction='/removemovie' name='remove_movie' value=<%=movie.id %>>Remove from my Drey</button>
+      <% } else {%>
+        <button type="submit" class="btn btn-success" formaction='/addmovie' name='add_movie' value=<%=movie.id %>>Add to my Drey</button>
+      <% } %>
+
       <div class="card-body text-center">
         <p class="movieDetails">
           
