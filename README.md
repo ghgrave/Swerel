@@ -32,3 +32,8 @@
 1. Set up movie Drey to display user specific movies added to db
 1. Still need to refactor and clean up paths - DONE
 1. Movies sorted by date - descending - on upcoming page
+
+3/30/2021
+
+1. Updated card.ejs  to determin eif deleting or adding movie
+1. Build routes to delete movies
