@@ -1,5 +1,5 @@
 {
-  "name": "roster",
+  "name": "skwerel",
   "version": "1.0.0",
   "description": "Site allows user to save to a watchlist and have auto-notifications sent to them when items are available",
   "main": "index.js",
@@ -18,7 +18,15 @@
     "url": "git+https://github.com/ghgrave/Skwerel.git"
   },
   "keywords": [
-    "students"
+    "skwerel",
+    "movie.",
+    "movies",
+    "tv",
+    "shows",
+    "books",
+    "nest",
+    "nuts",
+    "watchlist"
   ],
   "author": "gHgraveDesigns@2021",
   "license": "ISC",

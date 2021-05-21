@@ -1,12 +1,14 @@
 const keys = require("../../config/keys");
 const mongoose = require('mongoose')
 const passport = require('passport')
-const express = require('express')
 
 const User = require("../../models/User");
+// const Movie = require("../../models/Movie");
+
+const bodyParser = require("body-parser");
 
 module.exports = (app) => {
-  app.use(express.urlencoded({ extended: true }));
+  app.use(bodyParser.urlencoded({ extended: true }));
   
   app.get("/login", (req, res) => {
     res.render("login.ejs");
@@ -14,7 +16,7 @@ module.exports = (app) => {
 
   app.post("/login",
     passport.authenticate("local", {
-      successRedirect: "/roster",
+      successRedirect: "/my_dreys",
       failureRedirect: "/login"
     }),
     function (req, res) {
@@ -25,7 +27,7 @@ module.exports = (app) => {
     // When we logout, Passport destroys all user data in the session.
     req.logout();
     // redirect them to the home page
-    res.redirect("/login");
+    res.redirect("/");
   });
 
   app.get("/signup", (req, res) => {
@@ -39,7 +41,7 @@ module.exports = (app) => {
         return res.render("signup.ejs", {errMsg: 'User already exists'});
       } else {
         passport.authenticate("local")(req, res, function () {
-          res.redirect("/roster");
+          res.redirect("/upcoming");
         });
       }
     });
